@@ -1,0 +1,11 @@
+html
+	head
+	body
+	block content
+		h1 Search User
+			form(name="add-estimation" method="POST" action="/userresult")
+				div.input
+					span.lable <br> Name <br>
+					input(type='text' name='firstname')
+				div.actions
+					input(type='submit' value='Search')
