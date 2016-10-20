@@ -37,9 +37,29 @@ app.post('/userresult', function(req, res){
 		})
 })
 
-//route 4: renders a page with three forms on it (first name, last name, and email) that allows you to add new users to the users.json file.
+//route 4: renders a page with three forms on it (first name, last name, and email) 
+//that allows you to add new users to the users.json file.
+app.get('/addusers', (req,res)=> {
+	res.render('addusers')
+})
 
 
+//route 5: takes in the post request from the 'create user' form, 
+//then adds the user to the users.json file. Once that is complete, 
+//redirects to the route that displays all your users (from part 0).
+
+
+app.post('/users', (req,res)=>{
+	fs.readFile(__dirname + '/users.json', function(err, data){
+		if (err) throw(err);
+		let parsedData = JSON.parse(data)
+		parsedData.push (req.body)
+		let json = JSON.stringify(parsedData) 
+		fs.writeFile(__dirname + '/users.json', json); 
+		res.redirect('users')
+
+	})
+})
 
 //Created a server that listens on port 8000
 app.listen(1337,() => {
