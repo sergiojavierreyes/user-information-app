@@ -1,4 +1,4 @@
-//Include the necessary modules
+ //Include the necessary modules
 const express = require('express')
 const fs= require('fs')
 const app = express()
@@ -7,6 +7,7 @@ const bodyParser = require ('body-parser')
 app.set('view engine', 'pug')
 app.set('views', __dirname + "/views")
 
+app.use(express.static('public'))
 app.use(bodyParser.urlencoded({extended:true}))
 
 //Route 1. Displays all users
