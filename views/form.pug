@@ -1,15 +1,20 @@
 html
 	head
 	script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js")
-	script(type='text/javascript' src='public/style/search.js')
+
+	script(type='text/javascript' src='js/search.js')
+
 
 	body
 		block content
 			h1 Search User
-					form(name="add-estimation" method="POST" action="/userresult")
+					form(method="POST" action="/userresult")
 						div.input
 							span.lable <br> Name <br>
-							input#target(type='text' name='firstname')
+							br
+							input#searchBar(type='text' name='firstname')
+						br
 						div.actions
 							input(type='submit' value='Search')
-				
+						ul#update
+
