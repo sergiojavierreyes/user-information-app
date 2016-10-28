@@ -75,9 +75,11 @@ app.post('/form', function(req, res){
 	fs.readFile(__dirname + '/users.json', function(err, data){
 		if (err) throw(err);
 		let parsedData = JSON.parse(data)
+		var searchresult = []
 		for (let i = parsedData.length - 1; i >= 0; i--) {
 			if (parsedData[i].firstname.indexOf(req.body.data) === 0 || parsedData[i].lastname.indexOf(req.body.data) === 0 ) {
 				console.log(parsedData[i].firstname+" "+parsedData[i].lastname)
+				searchresult.push(parsedData[i])
 			}
 
 		// loop through database
@@ -85,10 +87,9 @@ app.post('/form', function(req, res){
 		// indexOf()
 		// with all users for this is the case, send them back to front-end
 
-		
-	}
-})
-	res.send(parsedData[i])
+			}
+			res.send(searchresult)
+	})
 })
 
 
